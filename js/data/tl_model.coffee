@@ -1,5 +1,3 @@
-#= require tl/tl
-
 TL.Model = DS.Model.extend
 
   # Override the init method to use our own state manger

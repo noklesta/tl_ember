@@ -1,12 +1,3 @@
-#= require tl/tl
-#= require jquery
-#= require jquery-ui
-#= require jquery.event.drag-2.0.min
-#= require slick.core
-#= require slick.grid
-#= require slick.rowselectionmodel
-#= require slick.dataview
-
 TL.Grid = Em.View.extend
 
   # NOTE: SlickGrid expects its rows to be defined as an array of

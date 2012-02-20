@@ -1,5 +1,3 @@
-//= require tl/tl
-
 // TODO: Try to avoid duplicating all this code from ember-data in order
 // to extend the states object. The problem is that all this code, including the states object, is hidden
 // inside a closure in ember-data.js, so we cannot get to it, and I haven't been able to find another
