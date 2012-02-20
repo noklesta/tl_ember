@@ -1,0 +1,97 @@
+#= require tl/tl
+#= require ember-data
+#= require underscore
+#= require underscore.inflection
+
+siteRoot = '<%= Site.root %>'
+
+TL.RailsAdapter = DS.RESTAdapter.extend
+
+  loaded: []
+
+  # Override the pluralize method in DS.RESTAdapter with
+  # code from underscore.inflection.js
+  pluralize: (name) -> _.pluralize(name)
+
+
+  findAll: (store, type) ->
+    return if @loaded[type]
+
+    root = @rootForType(type)
+    relURL = type.url or @pluralize(root)
+
+    url = "#{siteRoot}/#{relURL}"
+
+    @ajax url, "GET",
+      success: (json) => @findAllCallback?(store, type, json)
+      error: @_ajaxError
+
+
+  createRecords: (store, type, models) ->
+    models.forEach (model) ->
+      @createRecord(store, type, model)
+    , @
+
+
+  updateRecords: (store, type, models) ->
+    models.forEach (model) ->
+      @updateRecord(store, type, model)
+    , @
+
+
+  deleteRecords: (store, type, models) ->
+    models.forEach (model) ->
+      @deleteRecord(store, type, model)
+    , @
+
+
+  createRecord: (store, type, model) ->
+    return unless model.shouldSave()
+
+    root = @rootForType(type)
+    relURL = type.url or @pluralize(root)
+
+    url = "#{siteRoot}/#{relURL}"
+
+    data = model.toJSON()
+
+    @ajax url, "POST",
+      data: data
+      contentType: 'application/json'
+      success: (json) => @createRecordCallback?(store, type, model, json)
+      error: @_ajaxError
+
+
+  updateRecord: (store, type, model) ->
+    return unless model.shouldSave()
+
+    primaryKey = Em.getPath(type, 'proto.primaryKey')
+    id = model.get(primaryKey)
+    root = @rootForType(type)
+    relURL = type.url or @pluralize(root)
+
+    url = "#{siteRoot}/#{relURL}/#{id}"
+
+    data = model.toJSON()
+
+    @ajax url, "PUT",
+      data: data
+      contentType: 'application/json'
+      success: (json) => @updateRecordCallback?(store, type, model, json)
+      error: @_ajaxError
+
+
+  deleteRecord: (store, type, model) ->
+    primaryKey = Em.getPath(type, 'proto.primaryKey')
+    id = model.get(primaryKey)
+    root = @rootForType(type)
+    relURL = type.url or @pluralize(root)
+
+    url = "#{siteRoot}/#{relURL}/#{id}"
+
+    @ajax url, "DELETE",
+      success: (json) => @deleteRecordCallback?(store, type, model, json)
+      error: @_ajaxError
+
+
+  _ajaxError: -> alert 'Server error. Please reload the web page and try again.'

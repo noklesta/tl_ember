@@ -1,0 +1,12 @@
+.tl-app-contents {
+  position: absolute;
+  top: 35px;
+  bottom: 20px;
+  width: 100%;
+  overflow: auto;
+
+  .centered {
+    width: 900px;
+    margin: 0 auto;
+  }
+}

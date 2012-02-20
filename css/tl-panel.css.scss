@@ -1,0 +1,43 @@
+.tl-panel {
+  $border-color: #afacac;
+  $shadow-color: #837f7f;
+  $background-start-color: #cbcbcb;
+  $background-end-color: #f1f0f0;
+  $background-color: #e8e8e8;
+
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  -moz-box-shadow: 3px 3px 7px $shadow-color;
+  -webkit-box-shadow: 3px 3px 7px $shadow-color;
+  box-shadow: 3px 3px 7px $shadow-color;
+  background-color: $background-color;
+
+  .buttons {
+    float: right;
+
+    .ui-button-icon-only {
+      width: 2.7em;
+      height: 1.5em;
+      border-color:rgba(0, 0, 0, 0.35);
+      margin-top: 2px;
+      margin-left: 2px;
+    }
+  }
+
+  .main-label {
+    font-weight: bold;
+    float: left;
+  }
+
+  h1 {
+    @extend h2;
+    float: left;
+  }
+
+  h2 {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 8px;
+  }
+}

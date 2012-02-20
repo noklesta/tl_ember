@@ -1,0 +1,33 @@
+.tl-app-header {
+  padding: 5px;
+  background: -moz-linear-gradient(90deg, #f4db15 0%, #f9f5ae 100%) #f6ef15;
+  background: -webkit-gradient(linear, left bottom, left top, from(#f4db15), to(#f9f5ae)) #f6ef15;
+  border-style: solid;
+  border-bottom: 1px solid #d1ca15;
+
+  .appname {
+    font: bold 17px "Abadi MT Condensed Extra Bold";
+    text-shadow: 2px 2px 2px #e0dcdc;
+    margin-top: 3px;
+    margin-left: 2px;
+    color: #2d2c2c;
+    float: left;
+  }
+
+  .button {
+    margin: 0 auto;
+    width: 60px;
+    display: block;
+  }
+
+  .logged-in-text {
+    float: right;
+    margin-top: 2px;
+    margin-right: 5px;
+  }
+
+  .logout-link {
+    margin-left: 20px;
+    font-weight: bold;
+  }
+}

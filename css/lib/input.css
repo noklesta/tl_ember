@@ -1,0 +1,26 @@
+input[type="text"], input[type="password"], textarea {
+	padding: 3px;
+	font-size: 13px;
+	text-shadow: 0px 1px 0px #fff;
+	outline: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #8d8d8d;
+	-webkit-box-shadow: 1px 1px 0px #efefef;
+	-moz-box-shadow: 1px 1px 0px #efefef;
+	box-shadow:  1px 1px 0px #efefef;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d7d7d7), to(#ffffff));
+	background-image: -moz-linear-gradient(top, #d7d7d7 0%, #ffffff 100%);
+}
+
+input:focus {
+	-webkit-box-shadow: 0px 0px 5px #007eff;
+	-moz-box-shadow: 0px 0px 5px #007eff;
+	box-shadow: 0px 0px 5px #007eff;
+}
+
+/* Needed by Firefox */
+textarea {
+	font-family: "Lucida Grande","Lucida Sans","Lucida Sans Unicode","Segoe UI",Verdana,sans-serif;
+}
