@@ -2,7 +2,7 @@
 
 // Create a new mixin for jQuery UI widgets using the new Ember
 // mixin syntax.
-TL.Widget = Ember.Mixin.create({
+TL.JQWidget = Ember.Mixin.create({
   // When Ember creates the view's DOM element, it will call this
   // method.
   didInsertElement: function() {

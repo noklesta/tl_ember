@@ -8,7 +8,7 @@
 #
 # This means that you should use `#collection` in your template to
 # create this view.
-TL.Menu = Ember.CollectionView.extend TL.Widget,
+TL.Menu = Ember.CollectionView.extend TL.JQWidget,
   uiType: 'menu'
   uiOptions: ['disabled']
   uiEvents: ['select']
