@@ -41,25 +41,19 @@ TL.RailsAdapter = DS.RESTAdapter.extend
 
 
   createRecord: (store, type, model) ->
-    return unless model.shouldSave()
-
     root = @rootForType(type)
     relURL = type.url or @pluralize(root)
 
     url = "#{siteRoot}/#{relURL}"
 
-    data = model.toJSON()
-
     @ajax url, "POST",
-      data: data
+      data: model.data
       contentType: 'application/json'
       success: (json) => @createRecordCallback?(store, type, model, json)
       error: @_ajaxError
 
 
   updateRecord: (store, type, model) ->
-    return unless model.shouldSave()
-
     primaryKey = Em.getPath(type, 'proto.primaryKey')
     id = model.get(primaryKey)
     root = @rootForType(type)
@@ -67,10 +61,8 @@ TL.RailsAdapter = DS.RESTAdapter.extend
 
     url = "#{siteRoot}/#{relURL}/#{id}"
 
-    data = model.toJSON()
-
     @ajax url, "PUT",
-      data: data
+      data: model.data
       contentType: 'application/json'
       success: (json) => @updateRecordCallback?(store, type, model, json)
       error: @_ajaxError
