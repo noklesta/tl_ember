@@ -2,16 +2,12 @@ siteRoot ?= ''
 
 TL.RailsAdapter = DS.RESTAdapter.extend
 
-  loaded: []
-
   # Override the pluralize method in DS.RESTAdapter with
   # code from underscore.inflection.js
   pluralize: (name) -> _.pluralize(name)
 
 
   findAll: (store, type) ->
-    return if @loaded[type]
-
     root = @rootForType(type)
     relURL = type.url or @pluralize(root)
 
