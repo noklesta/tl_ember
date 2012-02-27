@@ -43,7 +43,7 @@ TL.RailsAdapter = DS.RESTAdapter.extend
     url = "#{siteRoot}/#{relURL}"
 
     @ajax url, "POST",
-      data: model.data
+      data: model.toJSON()
       contentType: 'application/json'
       success: (json) => @createRecordCallback?(store, type, model, json)
       error: @_ajaxError
@@ -58,7 +58,7 @@ TL.RailsAdapter = DS.RESTAdapter.extend
     url = "#{siteRoot}/#{relURL}/#{id}"
 
     @ajax url, "PUT",
-      data: model.data
+      data: model.toJSON()
       contentType: 'application/json'
       success: (json) => @updateRecordCallback?(store, type, model, json)
       error: @_ajaxError
