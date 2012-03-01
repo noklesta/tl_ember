@@ -40,7 +40,7 @@ TL.RailsAdapter = DS.RESTAdapter.extend
     root = @rootForType(type)
     relURL = type.url or @pluralize(root)
 
-    url = "#{siteRoot}/#{relURL}"
+    url = "#{siteRoot}/#{relURL}/"
 
     @ajax url, "POST",
       data: model.toJSON()
