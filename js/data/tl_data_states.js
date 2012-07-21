@@ -4,7 +4,7 @@
 // way of extending it in a way that works :-\
 
 (function() {
-  var get = Ember.get, set = Ember.set, getPath = Ember.getPath;
+  var get = Ember.get, set = Ember.set;
 
   var cantLoadData = function() {
     // TODO: get the current state name
@@ -100,7 +100,7 @@
       setProperty: function(manager, context) {
         setProperty(manager, context);
 
-        var stateName = getPath(this, 'parentState.stateName'),
+        var stateName = get(this, 'parentState.stateName'),
         model = get(manager, 'model'),
         errors = get(model, 'errors'),
         key = context.key;

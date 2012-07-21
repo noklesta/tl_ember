@@ -50,7 +50,7 @@ TL.RailsAdapter = DS.RESTAdapter.extend
 
 
   updateRecord: (store, type, model) ->
-    primaryKey = Em.getPath(type, 'proto.primaryKey')
+    primaryKey = Em.get(type, 'proto.primaryKey')
     id = model.get(primaryKey)
     root = @rootForType(type)
     relURL = type.url or @pluralize(root)
@@ -65,7 +65,7 @@ TL.RailsAdapter = DS.RESTAdapter.extend
 
 
   deleteRecord: (store, type, model) ->
-    primaryKey = Em.getPath(type, 'proto.primaryKey')
+    primaryKey = Em.get(type, 'proto.primaryKey')
     id = model.get(primaryKey)
     root = @rootForType(type)
     relURL = type.url or @pluralize(root)
